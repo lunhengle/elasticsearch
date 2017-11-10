@@ -1,6 +1,6 @@
 package com.lhl.handle;
 
-import com.lhl.constants.SortRow;
+import com.lhl.constants.Sort;
 
 import java.io.Serializable;
 
@@ -19,7 +19,7 @@ final class AnalysisSort implements Serializable {
     /**
      * 排序.
      */
-    private SortRow sort;
+    private Sort sort;
 
     public String getName() {
         return name;
@@ -37,11 +37,11 @@ final class AnalysisSort implements Serializable {
         this.score = score;
     }
 
-    public SortRow getSort() {
+    public Sort getSort() {
         return sort;
     }
 
-    public void setSort(SortRow sort) {
+    public void setSort(Sort sort) {
         this.sort = sort;
     }
 }

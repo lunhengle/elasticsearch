@@ -3,10 +3,8 @@ package com.lhl.handle;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.lhl.annotatioin.*;
-import com.lhl.constants.Condition;
-import com.lhl.constants.ConditionRow;
-import com.lhl.constants.Match;
-import com.lhl.constants.MatchRow;
+import com.lhl.annotatioin.Sort;
+import com.lhl.constants.*;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -263,31 +261,31 @@ final class EsAnalysis {
         //组织查询条件集合
         if (null != analysisIndex.getAnalysisRows()) {
             for (AnalysisRow analysisRow : analysisIndex.getAnalysisRows()) {
-                if (null == analysisRow || "".equals(analysisRow.getName()) || "".equals(analysisRow.getValue()) || "".equals(Match.getValue(analysisRow.getMatch()))) {
+                if (null == analysisRow || "".equals(analysisRow.getName()) || "".equals(analysisRow.getValue()) || "".equals(MatchInfo.getValue(analysisRow.getMatch()))) {
                     continue;
                 }
                 JSONObject matchJson = new JSONObject();
-                if (analysisRow.getMatch() == MatchRow.GT
-                        || analysisRow.getMatch() == MatchRow.LT
-                        || analysisRow.getMatch() == MatchRow.EQ
-                        || analysisRow.getMatch() == MatchRow.GTE
-                        || analysisRow.getMatch() == MatchRow.LTE) { //组织区间
+                if (analysisRow.getMatch() == Match.GT
+                        || analysisRow.getMatch() == Match.LT
+                        || analysisRow.getMatch() == Match.EQ
+                        || analysisRow.getMatch() == Match.GTE
+                        || analysisRow.getMatch() == Match.LTE) { //组织区间
                     JSONObject json = new JSONObject();
-                    json.put(Match.getValue(analysisRow.getMatch()), analysisRow.getValue());
+                    json.put(MatchInfo.getValue(analysisRow.getMatch()), analysisRow.getValue());
                     JSONObject jsonObject = new JSONObject();
                     jsonObject.put(analysisRow.getName(), json);
                     matchJson.put(RANGE, jsonObject);
                 } else {
                     JSONObject json = new JSONObject();
                     json.put(analysisRow.getName(), analysisRow.getValue());
-                    matchJson.put(Match.getValue(analysisRow.getMatch()), json);
+                    matchJson.put(MatchInfo.getValue(analysisRow.getMatch()), json);
                 }
 
-                if (analysisRow.getCondition() == ConditionRow.MUST) {
+                if (analysisRow.getCondition() == Condition.MUST) {
                     mustJsonArray.add(matchJson);
-                } else if (analysisRow.getCondition() == ConditionRow.MUST_NOT) {
+                } else if (analysisRow.getCondition() == Condition.MUST_NOT) {
                     mustNotJsonArray.add(matchJson);
-                } else if (analysisRow.getCondition() == ConditionRow.SHOULD) {
+                } else if (analysisRow.getCondition() == Condition.SHOULD) {
                     shouldJsonArray.add(matchJson);
                 }
             }
@@ -308,7 +306,7 @@ final class EsAnalysis {
                 if (null == analysisSort || "".equals(analysisSort.getName())) {
                     continue;
                 }
-                jsonObject.put(ORDER, com.lhl.constants.Sort.getValue(analysisSort.getSort()));
+                jsonObject.put(ORDER, SortInfo.getValue(analysisSort.getSort()));
                 sortJson.put(analysisSort.getName(), jsonObject);
                 sortArray.add(sortJson);
             }
@@ -318,13 +316,13 @@ final class EsAnalysis {
             addJson = false;
         } else {
             if (mustJsonArray.size() > 0) {
-                boolChildJson.put(Condition.getValue(ConditionRow.MUST), mustJsonArray);
+                boolChildJson.put(ConditionInfo.getValue(Condition.MUST), mustJsonArray);
             }
             if (mustNotJsonArray.size() > 0) {
-                boolChildJson.put(Condition.getValue(ConditionRow.MUST_NOT), mustNotJsonArray);
+                boolChildJson.put(ConditionInfo.getValue(Condition.MUST_NOT), mustNotJsonArray);
             }
             if (shouldJsonArray.size() > 0) {
-                boolChildJson.put(Condition.getValue(ConditionRow.SHOULD), shouldJsonArray);
+                boolChildJson.put(ConditionInfo.getValue(Condition.SHOULD), shouldJsonArray);
             }
         }
         if (addJson) {

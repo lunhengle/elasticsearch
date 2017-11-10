@@ -1,7 +1,5 @@
 package com.lhl.annotatioin;
 
-import com.lhl.constants.SortRow;
-
 import java.lang.annotation.*;
 
 /**
@@ -26,10 +24,11 @@ public @interface Sort {
      *
      * @return 排序
      */
-    SortRow order() default SortRow.DESC;
+    com.lhl.constants.Sort order() default com.lhl.constants.Sort.DESC;
 
     /**
      * 排序得分.
+     * 数值越大 优先级越高
      *
      * @return 排序得分
      */

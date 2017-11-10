@@ -1,7 +1,7 @@
 package com.lhl.handle;
 
-import com.lhl.constants.ConditionRow;
-import com.lhl.constants.MatchRow;
+import com.lhl.constants.Condition;
+import com.lhl.constants.Match;
 
 import java.io.Serializable;
 
@@ -16,11 +16,11 @@ public final class AnalysisRow implements Serializable {
     /**
      * 运算类型.
      */
-    private ConditionRow condition;
+    private Condition condition;
     /**
      * 匹配类型.
      */
-    private MatchRow match;
+    private Match match;
 
     /**
      * 值.
@@ -35,19 +35,19 @@ public final class AnalysisRow implements Serializable {
         this.name = name;
     }
 
-    public ConditionRow getCondition() {
+    public Condition getCondition() {
         return condition;
     }
 
-    public void setCondition(ConditionRow condition) {
+    public void setCondition(Condition condition) {
         this.condition = condition;
     }
 
-    public MatchRow getMatch() {
+    public Match getMatch() {
         return match;
     }
 
-    public void setMatch(MatchRow match) {
+    public void setMatch(Match match) {
         this.match = match;
     }
 

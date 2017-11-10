@@ -1,9 +1,9 @@
 package com.lhl.bean;
 
 import com.lhl.annotatioin.*;
-import com.lhl.constants.ConditionRow;
-import com.lhl.constants.MatchRow;
-import com.lhl.constants.SortRow;
+import com.lhl.constants.Condition;
+import com.lhl.constants.Match;
+import com.lhl.constants.Sort;
 
 /**
  * 线索.
@@ -14,58 +14,58 @@ public class Clue {
     /**
      * id.
      */
-    @Sort(name = "id", order = SortRow.DESC, socre = 100)
+    @com.lhl.annotatioin.Sort(name = "id", order = Sort.DESC, socre = 100)
     private Integer id;
     /**
      * 公司名称.
      */
-    @Row(name = "company_name", match = MatchRow.MATCH_PHRASE, condition = ConditionRow.MUST)
+    @Row(name = "company_name", match = Match.MATCH_PHRASE, condition = Condition.MUST)
     private String companyName;
     /**
      * 省份.
      */
-    @Row(name = "province", match = MatchRow.MATCH_PHRASE, condition = ConditionRow.MUST)
+    @Row(name = "province", match = Match.MATCH_PHRASE, condition = Condition.MUST)
     private String province;
     /**
      * 开始时间.
      */
-    @Sort(name = "regist_time", order = SortRow.ASC, socre = 100)
-    @Row(name = "regist_time", match = MatchRow.GTE, condition = ConditionRow.MUST)
+    @com.lhl.annotatioin.Sort(name = "regist_time", order = Sort.ASC, socre = 100)
+    @Row(name = "regist_time", match = Match.GTE, condition = Condition.MUST)
     private String registTimeStart;
     /**
      * 结束时间.
      */
-    @Row(name = "regist_time", match = MatchRow.LTE, condition = ConditionRow.MUST)
+    @Row(name = "regist_time", match = Match.LTE, condition = Condition.MUST)
     private String registTimeEnd;
     /**
      * 状态.
      */
-    @Row(name = "status", match = MatchRow.TERM, condition = ConditionRow.MUST)
+    @Row(name = "status", match = Match.TERM, condition = Condition.MUST)
     private Integer status;
     /**
      * 城市.
      */
-    @Row(name = "city", match = MatchRow.MATCH_PHRASE, condition = ConditionRow.MUST_NOT)
+    @Row(name = "city", match = Match.MATCH_PHRASE, condition = Condition.MUST_NOT)
     private String city;
     /**
      * 行业.
      */
-    @Row(name = "category", match = MatchRow.MATCH_PHRASE, condition = ConditionRow.SHOULD)
+    @Row(name = "category", match = Match.MATCH_PHRASE, condition = Condition.SHOULD)
     private String category;
     /**
      * 行业.
      */
-    @Row(name = "category", match = MatchRow.MATCH_PHRASE, condition = ConditionRow.SHOULD)
+    @Row(name = "category", match = Match.MATCH_PHRASE, condition = Condition.SHOULD)
     private String categorys[];
     /**
      * 法人.
      */
-    @Row(name = "legal_person", match = MatchRow.MATCH_PHRASE, condition = ConditionRow.MUST_NOT)
+    @Row(name = "legal_person", match = Match.MATCH_PHRASE, condition = Condition.MUST_NOT)
     private String legalPerson;
     /**
      * 法人.
      */
-    @Row(name = "legal_person", match = MatchRow.MATCH_PHRASE, condition = ConditionRow.MUST_NOT)
+    @Row(name = "legal_person", match = Match.MATCH_PHRASE, condition = Condition.MUST_NOT)
     private String legalPersons[];
     /**
      * 开始.

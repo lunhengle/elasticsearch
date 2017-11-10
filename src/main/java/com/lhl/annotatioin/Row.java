@@ -1,7 +1,7 @@
 package com.lhl.annotatioin;
 
-import com.lhl.constants.ConditionRow;
-import com.lhl.constants.MatchRow;
+import com.lhl.constants.Condition;
+import com.lhl.constants.Match;
 
 import java.lang.annotation.*;
 
@@ -33,7 +33,7 @@ public @interface Row {
      *
      * @return 条件运算
      */
-    ConditionRow condition() default ConditionRow.MUST;
+    Condition condition() default Condition.MUST;
 
     /**
      * 匹配类型.
@@ -44,6 +44,6 @@ public @interface Row {
      *
      * @return 匹配类型
      */
-    MatchRow match() default MatchRow.MATCH_PHRASE;
+    Match match() default Match.MATCH_PHRASE;
 
 }
