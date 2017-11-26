@@ -13,6 +13,8 @@
         <junit.version>4.12</junit.version>
         <httpclient.version>4.5.3</httpclient.version>
         <fastjson.version>1.2.37</fastjson.version>
+        <target.dir>D:\迅雷下载</target.dir>
+        <target.version>1.0-SNAPSHOT</target.version>
     </properties>
     <dependencies>
         <!--test-->
@@ -54,6 +56,27 @@
                 <configuration>
                     <encoding>UTF-8</encoding><!-- 指定编码格式，否则在DOS下运行mvn命令时当发生文件资源copy时将使用系统默认使用GBK编码 -->
                 </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <tasks>
+                                <mkdir dir="${target.dir}/${target.version}"/>
+                                <copy todir="${target.dir}/${target.version}" overwrite="true">
+                                 <fileset dir="" erroronmissingdir="false">
+                                     <inclue name="*.jar"/>
+                                 </fileset>
+                                </copy>
+                            </tasks>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
