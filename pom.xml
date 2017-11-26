@@ -69,7 +69,7 @@
                             <tasks>
                                 <mkdir dir="${target.dir}/${target.version}"/>
                                 <copy todir="${target.dir}/${target.version}" overwrite="true">
-                                 <fileset dir="" erroronmissingdir="false">
+                                 <fileset dir="${project.build.directory}" erroronmissingdir="false">
                                      <include  name="*.jar"/>
                                  </fileset>
                                 </copy>
