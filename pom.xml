@@ -13,8 +13,6 @@
         <junit.version>4.12</junit.version>
         <httpclient.version>4.5.3</httpclient.version>
         <fastjson.version>1.2.37</fastjson.version>
-        <target.dir>D:\迅雷下载</target.dir>
-        <target.version>1.0-SNAPSHOT</target.version>
     </properties>
     <dependencies>
         <!--test-->
