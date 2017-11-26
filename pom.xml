@@ -70,7 +70,7 @@
                                 <mkdir dir="${target.dir}/${target.version}"/>
                                 <copy todir="${target.dir}/${target.version}" overwrite="true">
                                  <fileset dir="" erroronmissingdir="false">
-                                     <inclue name="*.jar"/>
+                                     <include  name="*.jar"/>
                                  </fileset>
                                 </copy>
                             </tasks>
